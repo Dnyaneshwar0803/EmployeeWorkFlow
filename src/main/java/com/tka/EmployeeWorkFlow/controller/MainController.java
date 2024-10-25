@@ -75,6 +75,12 @@ public class MainController {
 		List<Employee> list=service.getAllEmployee();
 		return list;
 	}
+
+	@DeleteMapping("deleteemp/{id}")
+	public String deleteEmployee(@PathVariable int id) {
+		String msg=service.deleteEmployee(id);
+		return msg;
+	}
 	
 	@GetMapping("getParticularEmpbyId/{id}")
 	public Employee getParticularEmp(@PathVariable int id) {
