@@ -231,6 +231,34 @@ public class MainDao {
 		return msg;
 	}
 
+	public String deleteEmployee(int id) {
+
+		Session session = null;
+		Transaction tx = null;
+		String msg = null;
+
+		try {
+			session = factory.openSession();
+			tx = session.beginTransaction();
+
+			Employee emp = session.get(Employee.class, id);
+			session.remove(emp);
+			tx.commit();
+			msg = "Employee is Deleted";
+
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return msg;
+	}
+
 	public List<Employee> getAllEmployee() {
 		
 		Session session = null;
