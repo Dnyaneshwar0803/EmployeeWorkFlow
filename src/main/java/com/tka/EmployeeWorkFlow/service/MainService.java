@@ -81,6 +81,14 @@ public class MainService {
 		return str;
 	}
 
+	public String deleteEmployee(int id) {
+		String msg=dao.deleteEmployee(id);
+		if(Objects.isNull(msg)) {
+			msg="Employee is not deleted..";
+		}
+		return msg;
+	}
+
 	public List<Employee> getAllEmployee() {
 
 		List<Employee> list = dao.getAllEmployee();
